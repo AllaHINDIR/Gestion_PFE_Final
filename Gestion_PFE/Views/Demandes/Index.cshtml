@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Gestion_PFE.Models.Demande>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Les Demandes d'encadrement</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.titre)
+            </th>
+            <th>
+                Etudiant
+            </th>
+            <th>
+                Encadrant
+            </th>
+            <th>
+                Etat
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etudiant.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Encadrant.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.etat)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
